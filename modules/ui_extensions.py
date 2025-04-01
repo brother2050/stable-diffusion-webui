@@ -407,9 +407,12 @@ def install_extension_from_index(url, selected_tags, showing_type, filtering_typ
 def refresh_available_extensions(url, selected_tags, showing_type, filtering_type, sort_column):
     global available_extensions
 
-    import urllib.request
-    with urllib.request.urlopen(url) as response:
-        text = response.read()
+    # import urllib.request
+    # with urllib.request.urlopen(url) as response:
+    #     text = response.read()
+
+    with open(os.path.join(paths.data_path, "index.json"), "r") as f:
+        text = f.read()
 
     available_extensions = json.loads(text)
 
